@@ -1,0 +1,395 @@
+options:
+  parameters:
+    author: Kostis Triantafyllakis (kostastriantaf@gmail.com)
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: leo_channel
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: run
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: LEO channel simulation
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: pointing_error
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: ''
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '90'
+    value: '1'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [776, 692.0]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: 250e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [272, 4.0]
+    rotation: 0
+    state: enabled
+- name: satellite_rx_antenna
+  id: variable_antenna
+  parameters:
+    aperture_efficiency: '55'
+    beamwidth: '360'
+    boom_length: '2.35'
+    circumference: '1'
+    comment: ''
+    diameter: '5.4'
+    frequency: 435e6
+    gain: '6'
+    lp: '0.5'
+    pointing_error: pointing_error
+    polarization: '3'
+    rolloff_gain: '0'
+    turn_spacing: '0.25'
+    turns: '10'
+    type: '1'
+    value: '"ok"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 684.0]
+    rotation: 0
+    state: enabled
+- name: satellite_tx_antenna
+  id: variable_antenna
+  parameters:
+    aperture_efficiency: '55'
+    beamwidth: '50'
+    boom_length: '2.35'
+    circumference: '1'
+    comment: ''
+    diameter: '5.4'
+    frequency: 435e6
+    gain: '14'
+    lp: '0.5'
+    pointing_error: pointing_error
+    polarization: '3'
+    rolloff_gain: '0'
+    turn_spacing: '0.25'
+    turns: '10'
+    type: '5'
+    value: '"ok"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 676.0]
+    rotation: 0
+    state: enabled
+- name: tracker_rx_antenna
+  id: variable_antenna
+  parameters:
+    aperture_efficiency: '55'
+    beamwidth: '360'
+    boom_length: '2.35'
+    circumference: '1'
+    comment: ''
+    diameter: '5.4'
+    frequency: 435e6
+    gain: '6'
+    lp: '0.5'
+    pointing_error: pointing_error
+    polarization: '3'
+    rolloff_gain: '0'
+    turn_spacing: '0.25'
+    turns: '10'
+    type: '0'
+    value: '"ok"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 684.0]
+    rotation: 0
+    state: enabled
+- name: tracker_tx_antenna
+  id: variable_antenna
+  parameters:
+    aperture_efficiency: '55'
+    beamwidth: '50'
+    boom_length: '2.35'
+    circumference: '1'
+    comment: ''
+    diameter: '5.4'
+    frequency: 145.8e6
+    gain: '14'
+    lp: '0.5'
+    pointing_error: pointing_error
+    polarization: '0'
+    rolloff_gain: '0'
+    turn_spacing: '0.25'
+    turns: '10'
+    type: '5'
+    value: '"ok"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [400, 692.0]
+    rotation: 0
+    state: enabled
+- name: variable_leo_model_def_0
+  id: variable_leo_model_def
+  parameters:
+    atmo_gases_attenuation: '1'
+    comment: ''
+    doppler_shift_enum: '7'
+    enable_link_margin: 'True'
+    fspl_attenuation_enum: '5'
+    mode: '1'
+    pointing_attenuation_enum: '0'
+    precipitation_attenuation: '3'
+    rainfall_rate: '90'
+    surface_watervap_density: '7.5'
+    temperature: '20'
+    tracker: variable_tracker_0
+    value: '''fine'''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 692.0]
+    rotation: 0
+    state: enabled
+- name: variable_satellite_0
+  id: variable_satellite
+  parameters:
+    comm_freq_rx: 435e6
+    comm_freq_tx: 435e6
+    comment: ''
+    noise_figure: '12'
+    noise_temp: '190'
+    rx_antenna: satellite_rx_antenna
+    rx_bw: '1200'
+    tle_1: 1 54687U 22167F   24116.15977642  .00023330  00000-0  12365-2 0  9993
+    tle_2: 2 54687  97.5885 257.7413 0007550 337.0243  23.0651 15.15365179 76083
+    tle_title: TianQi7
+    tx_antenna: satellite_tx_antenna
+    tx_power_dbm: '27'
+    value: '''ok'''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 132.0]
+    rotation: 0
+    state: enabled
+- name: variable_tracker_0
+  id: variable_tracker
+  parameters:
+    comm_freq_rx: 435e6
+    comm_freq_tx: 435E6
+    comment: ''
+    gs_alt: '1'
+    gs_lat: '39.9059'
+    gs_lon: '116.3943'
+    noise_figure: '1'
+    noise_temp: '120'
+    obs_end: '2024-04-25T18:30:59.0000000Z'
+    obs_start: '2024-04-25T18:12:59.0000000Z'
+    rx_antenna: tracker_rx_antenna
+    rx_bw: '19200'
+    satellite_info: variable_satellite_0
+    time_resolution_us: '500000'
+    tx_antenna: tracker_tx_antenna
+    tx_power_dbm: '37'
+    value: '''fine'''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [936, 120.0]
+    rotation: 0
+    state: enabled
+- name: blocks_file_sink_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: D:\wendang\final
+    type: complex
+    unbuffered: 'True'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1024, 512.0]
+    rotation: 0
+    state: disabled
+- name: blocks_file_source_0
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: ''
+    file: D:\wendang\aaaa
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'True'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [56, 432.0]
+    rotation: 0
+    state: enabled
+- name: blocks_throttle2_0
+  id: blocks_throttle2
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [264, 456.0]
+    rotation: 0
+    state: enabled
+- name: leo_channel_model_0
+  id: leo_channel_model
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    filename: out.csv
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    model: variable_leo_model_def_0
+    noise_type: '0'
+    sample_rate: 40e3
+    store_csv: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [472, 432.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_sink_x_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate
+    comment: ''
+    fc: '0'
+    fftsize: '4096'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    plotconst: 'False'
+    plotfreq: 'False'
+    plottime: 'False'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [736, 328.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_sink_x_1
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [736, 480.0]
+    rotation: 0
+    state: disabled
+
+connections:
+- [blocks_file_source_0, '0', blocks_throttle2_0, '0']
+- [blocks_throttle2_0, '0', leo_channel_model_0, '0']
+- [leo_channel_model_0, '0', blocks_file_sink_0, '0']
+- [leo_channel_model_0, '0', qtgui_sink_x_0, '0']
+- [leo_channel_model_0, '0', qtgui_sink_x_1, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.9.2
